@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <!-- Meta, title, CSS, favicons, etc. -->
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Cloud Niners</title>
+
+  <!-- Bootstrap -->
+  <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link href="../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+
+  <!-- Custom Theme Style -->
+  <link href="../build/css/custom.min.css" rel="stylesheet">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/1.0.0/angular-ui-router.js"></script>
+
+<!-- iCheck -->
+    <link href="../vendors/iCheck/skins/flat/green.css" rel="stylesheet">
+
+
+</head>
+
+<body class="nav-md" style="background: #2A3F54">
+  <div class="container body">
+    <div class="main_container">
+      <div class="col-md-3 left_col">
+        <div class="left_col scroll-view">
+          <div class="navbar nav_title" style="border: 0;">
+            <a href="index.html" class="site_title"><i class="fa fa-cloud"></i> <span>Cloud Niners</span></a>
+          </div>
+
+          <div class="clearfix"></div>
+
+          <!-- menu profile quick info -->
+          <div class="profile">
+            <div class="profile_pic">
+              <img src="images/img.jpg" alt="..." class="img-circle profile_img">
+            </div>
+            <div class="profile_info" style="margin-bottom: 30px;">
+              <span>Welcome</span>
+              <span>{{ username | capitalize}}</span>
+            </div>
+          </div>
+          <!-- /menu profile quick info -->
+
+          <br />
+
+          <!-- sidebar menu -->
+          <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+            <div class="menu_section">
+              <div ng-hide="ismanager">
+                <h3>&nbsp;</h3>
+
+              </div>
+              <div ng-hide="istester">
+                <h3>&nbsp;</h3>
+                <ul class="nav side-menu">
+                  <li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a ui-sref="dashboard">Dashboard</a></li>
+                    </ul>
+                  </li>
+                  <li><a><i class="fa fa-edit"></i> Projects <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+
+                      <li><a ui-sref="addproject">Add Project</a></li>
+                      <li><a ui-sref="viewprojects">View Project</a></li>
+                      <li><a ui-sref="myProject">My Project</a></li>
+
+
+                      <!--    <li><a href="form_advanced.html">Advanced Components</a></li>
+                      <li><a href="form_validation.html">Form Validation</a></li>
+                      <li><a href="form_wizards.html">Form Wizard</a></li>
+                      <li><a href="form_upload.html">Form Upload</a></li>
+                      <li><a href="form_buttons.html">Form Buttons</a></li>-->
+                    </ul>
+                  </li>
+                  <li><a><i class="fa fa-desktop"></i> People <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a ui-sref="projectmanager">Project Managers</a></li>
+                      <li><a ui-sref="testers">Testers</a></li>
+                      <li><a ui-sref="customers">Customers</a></li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+
+          </div>
+          <!-- /sidebar menu -->
+
+          <!-- /menu footer buttons -->
+          <!-- /menu footer buttons -->
+        </div>
+      </div>
+
+      <!-- top navigation -->
+      <div class="top_nav">
+        <div class="nav_menu">
+          <nav class="" role="navigation">
+            <div class="nav toggle">
+              <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+            </div>
+
+            <ul class="nav navbar-nav navbar-right">
+              <li class="">
+                <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                  <img src="images/img.jpg" alt="">{{ username | capitalize}}
+                  <span class=" fa fa-angle-down" style="margin-right: 40px;"></span>
+                </a>
+                <ul class="dropdown-menu dropdown-usermenu pull-right">
+                  <li><a ui-sref="profile"> Profile</a></li>
+                  <li><a href="login.html" ng-click="logout()" style="margin-right: 10px;"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
+                </ul>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+      <!-- /top navigation -->
+
+      <!-- page content -->
+      <ui-view>
+        <h2>Loading...</h2>
+      </ui-view>
+      <!-- /page content -->
+
+      <!-- footer content -->
+      <footer>
+        <div class="pull-right">
+        </div>
+        <div class="clearfix"></div>
+      </footer>
+      <!-- /footer content -->
+    </div>
+  </div>
+
+  <!-- jQuery -->
+  <script src="../vendors/jquery/dist/jquery.min.js"></script>
+  <script src="js/datatables/jquery.dataTables.min.js"></script>
+  <!-- Bootstrap -->
+  <script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+  <!-- FastClick -->
+  <script src="../vendors/fastclick/lib/fastclick.js"></script>
+  <!-- NProgress -->
+  <script src="../vendors/nprogress/nprogress.js"></script>
+
+  <!-- Custom Theme Scripts -->
+  <script src="../build/js/custom.min.js"></script>
+  <script src="controllers/controller.js"></script>
+  <script src="js/datatables/angular-datatables.min.js"></script>
+  <script src="js/datatables/dirPagination.js"></script>
+  <script src="js/datatables/angular-datatables.bootstrap.min.js"></script>
+  <script src="js/datepicker/daterangepicker.js"></script>
+  <!-- Bootcards JS -->
+  <script src="//cdnjs.cloudflare.com/ajax/libs/bootcards/1.0.0/js/bootcards.min.js"></script>
+  <link rel="stylesheet" href="css/datatables/angular-datatables.css">
+  <link rel="stylesheet" href="css/datatables/datatables.bootstrap.min.css">
+  <!-- Bootcards CSS for desktop: -->
+  <!--<link rel="stylesheet" href="css/bootcards-desktop.min.css">-->
+  <link href="../build/css/viewProfile.css" rel="stylesheet">
+
+
+  <script src="../vendors/raphael/raphael.min.js"></script>
+  <script src="../vendors/morris.js/morris.min.js"></script>
+</body>
+
+</html>

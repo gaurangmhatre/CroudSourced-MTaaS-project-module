@@ -1,0 +1,285 @@
+<div class="right_col" role="main">
+    <div class="">
+        <div class="page-title">
+            <div class="title_left">
+                <h3>My Project</h3>
+            </div>
+
+            <div class="title_right">
+                <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                    <div class="input-group">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="clearfix"></div>
+        <div class="row">
+            <div class="col-md-2">
+                <div class="form-group">
+                    <input type="text" ng-model="search" class="form-control" placeholder="Search">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>View My Projects</h2>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Project Name</th>
+                                    <th>Project Start Date</th>
+                                    <th>Project End Date</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr dir-paginate="project in projectlist| filter:{name: search } |itemsPerPage:5 track by $index">
+
+                                    <td>{{project.name}}</td>
+                                    <td>{{project.startdate | trimDate}}</td>
+                                    <td>{{project.enddate | trimDate}}</td>
+                                    <td style="display:none">{{project.description}}</td>
+                                    <td>
+                                        <div ng-hide="istester"><button type="button" class="btn btn-info" data-toggle="modal" data-target="#editModal"
+                                                ng-click="editProject(project._id)">Edit</button></div>
+                                    </td>
+                                    <td>
+                                        <div ng-hide="istester"><button id="{{project._id}}" type="button" class="btn btn-danger" ng-click="deleteProject(project._id)">Delete</button></div>
+                                    </td>
+                                    <td><button type="button" class="btn btn-success" data-toggle="modal" data-target="#viewModal"
+                                            ng-click="viewProject(project._id)">View</button></td>
+                                    <td><button type="button" class="btn btn-info" data-toggle="modal" data-target="#viewTestCasesModal"
+                                            ng-click="viewProject(project._id)">Test Cases</button></td>
+                                    <td><button type="button" class="btn btn-success" data-toggle="modal" data-target="#viewBroadcastModal"
+                                            ng-click="broadcast(project)">Broadcast</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="row">
+
+                        <div class="col-sm-9">
+                            <dir-pagination-controls max-size="100" direction-links="true" boundary-links="true">
+                            </dir-pagination-controls>
+                        </div>
+                        <div class="col-sm-1"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="viewModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Project Details</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <p><strong>Project Name: </strong></div>
+                            <div class="col-sm-8">{{projectData.name}}</p>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <p><strong>Project Started: </strong></div>
+                            <div class="col-sm-8">{{projectData.startdate | trimDate}}</p>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <p><strong>Project Ending Date: </strong></div>
+                            <div class="col-sm-8">{{projectData.enddate | trimDate}}</p>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <p><strong>Project Description: </strong></div>
+                            <div class="col-sm-8">{{projectData.description}}</p>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-4"><strong>Assigned Roles: </strong></div>
+                            <div class="col-sm-8">
+                                <ul style="padding-left: 0px; list-style-type: none;">
+                                    <li ng-repeat="users in projectData.assignedUserList">
+                                        {{users.name | capitalize}} {{users.last_name | capitalize}} - {{users.role | capitalize}}
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="editModalLabel">Edit Project</h4>
+                    </div>
+                    <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
+                        <br>
+                        <div class="form-group">
+                            <label class="control-label col-md-4 col-sm-4 col-xs-12">Project Name <span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <input type="text" id="first-name" required="required" ng-model="projectData.name" class="form-control col-md-7 col-xs-12">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-4 col-sm-4 col-xs-12">Project Start Date <span class="required">*</span>
+                            </label>
+                            <script>
+                                webshims.setOptions('forms-ext', {
+                                    types: 'date'
+                                });
+                                webshims.polyfill('forms forms-ext');
+                            </script>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <input id="startdate" class="date-picker form-control col-md-7 col-xs-12" required="required" ng-model="projectData.startdate"
+                                    type="date">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-4 col-sm-4 col-xs-12">Project End Date <span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <input id="enddate" class="date-picker form-control col-md-7 col-xs-12" required="required" ng-model="projectData.enddate"
+                                    type="date">
+
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-4 col-sm-4 col-xs-12">Project Description</label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <textarea class="form-control" placeholder="" ng-model="projectData.description"></textarea>
+                            </div>
+                            <input type="text" required="required" ng-model="projectData._id" class="form-control col-md-7 col-xs-12" style="display: none;">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-md-4 col-sm-4 col-xs-12">Tehnologies Used
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <input type="text" id="technologies-used" required="required" ng-model="projectData.technologies" class="form-control col-md-7 col-xs-12">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-4 col-sm-4 col-xs-12">Estimated Cost
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <input type="text" id="estimated-cost" required="required" ng-model="projectData.cost" class="form-control col-md-7 col-xs-12">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-md-4 col-sm-4 col-xs-12">Estimated Hours
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <input type="text" id="estimated-hours" required="required" ng-model="projectData.hours" class="form-control col-md-7 col-xs-12">
+                            </div>
+                        </div>
+
+
+
+                    </form>
+                    <div class="modal-footer">
+
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-success" data-dismiss="modal" ng-click="update();">Update</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="viewTestCasesModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">TestCases Details</h4>
+                    </div>
+                    <div class="modal-body">
+                        <table class="table" datatable="ng">
+                            <thead>
+                                <tr>
+                                    <th>Test Case </th>
+                                    <th>Description</th>
+                                    <th>Status</th>
+                                    <th>Type</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="project in projectData.testData">
+                                    <td>{{project.testcase}}</td>
+                                    <td>{{project.description}}</td>
+                                    <td>{{project.status}}</td>
+                                    <td>{{project.type}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="viewBroadcastModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Broadcast Message</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
+                            <br>
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Tag<span class="required">*</span>
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <input type="text" id="tag-name" required="required" ng-model="tag" class="form-control col-md-7 col-xs-12">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Message:</label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <textarea class="form-control" placeholder="" ng-model="message"></textarea>
+                                </div>
+
+                            </div>
+
+                        </form>
+                        <div class="modal-footer">
+
+                            <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-success" data-dismiss="modal" ng-click="BroadcastMessage();">Broadcast Message</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>

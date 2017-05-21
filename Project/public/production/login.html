@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="loginapp">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <!-- Meta, title, CSS, favicons, etc. -->
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Cloud Niners</title>
+
+  <!-- Bootstrap -->
+  <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link href="../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <!-- Animate.css -->
+  <link href="../documentation/css/animate.min.css" rel="stylesheet">
+
+  <!-- Custom Theme Style -->
+  <link href="../build/css/custom.min.css" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+</head>
+
+<body class="login" ng-controller="LoginController">
+  <div>
+    <a class="hiddenanchor" id="signup"></a>
+    <a class="hiddenanchor" id="signin"></a>
+
+    <div class="login_wrapper">
+      <div class="animate form login_form">
+        <section class="login_content">
+          <form name="loginform">
+            <h1>Login Form</h1>
+            <div>
+              <input type="text" class="form-control" placeholder="Username" ng-model="userlogin.username" ng-required="true" />
+            </div>
+            <div>
+              <input type="password" class="form-control" placeholder="Password" ng-model="userlogin.password" ng-required="true" />
+            </div>
+            <div>
+              <button type="submit" class="btn btn-default submit" ng-click="loginform.$valid && authUser()">Log in</button>
+              <a class="reset_pass" href="#">Lost your password?</a>
+            </div>
+
+            <div class="clearfix"></div>
+
+            <div class="separator">
+              <p class="change_link">New to site?
+                <a href="#signup" class="to_register"> Create Account </a>
+              </p>
+
+              <div class="clearfix"></div>
+              <br />
+
+              <div>
+                <h1><i class="fa fa-cloud"></i> Cloud Niners</h1>
+                <p></p>
+              </div>
+            </div>
+          </form>
+        </section>
+      </div>
+
+      <div id="register" class="animate form registration_form">
+        <section class="login_content">
+          <form name="signupform">
+            <h1>Create Account</h1>
+            <div>
+              <input type="text" class="form-control" placeholder="Name" ng-model="user.name" ng-required="true" />
+            </div>
+            <div>
+              <input type="text" class="form-control" placeholder="Username" ng-model="user.username" ng-required="true" />
+            </div>
+            <div>
+              <select ng-model="user.role" class="form-control">
+                <option value="customer">Customer</option>
+                <option value="manager">Manager</option>
+                <option value="tester">Tester</option>
+              </select>
+            </div>
+            <div><br></div>
+            <div>
+              <input type="email" class="form-control" placeholder="Email" ng-model="user.email" ng-required="true" />
+            </div>
+            <div>
+              <input type="password" class="form-control" placeholder="Password" ng-model="user.password" ng-required="true" />
+            </div>
+            <div>
+              <button type="submit" class="btn btn-default submit" ng-click="signupform.$valid && addUser()">Submit </button>
+            </div>
+
+            <div class="clearfix"></div>
+
+            <div class="separator">
+              <p class="change_link">Already a member ?
+                <a href="#signin" class="to_register"> Log in </a>
+              </p>
+
+              <div class="clearfix"></div>
+              <br />
+
+              <div>
+                <h1><i class="fa fa-cloud"></i> Cloud Niners</h1>
+                <p></p>
+              </div>
+            </div>
+          </form>
+        </section>
+      </div>
+    </div>
+  </div>
+  <script src="controllers/logincontroller.js"></script>
+</body>
+
+</html>

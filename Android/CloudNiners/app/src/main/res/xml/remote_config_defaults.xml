@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- START xml_defaults -->
+<defaultsMap>
+    <entry>
+        <key>base_url</key>
+        <value>http://ec2-107-23-226-13.compute-1.amazonaws.com:3000/login.html</value>
+    </entry>
+</defaultsMap>
+    <!-- END xml_defaults -->

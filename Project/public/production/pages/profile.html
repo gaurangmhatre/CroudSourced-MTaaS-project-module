@@ -1,0 +1,189 @@
+<div class="right_col" role="main">
+  <section class="login_content">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-8">
+
+      <form name="signupform">
+        <h1>Profile</h1>
+        <div class="row">
+          <div class="col-sm-3">
+            <label class="control-label" style="float: left">First Name</label>
+          </div>
+          <div class="col-sm-1"></div>
+          <div class="col-sm-8">
+            <input type="text" class="form-control" placeholder="First Name" ng-model="user.name" ng-required="true" />
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-3">
+            <label class="control-label" style="float: left">Last Name</label>
+          </div>
+          <div class="col-sm-1"></div>
+          <div class="col-sm-8">
+            <input type="text" class="form-control" placeholder="Last Name" ng-model="user.last_name" ng-required="true" />
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-3">
+            <label class="control-label" style="float: left">User Id</label>
+          </div>
+          <div class="col-sm-1"></div>
+          <div class="col-sm-8">
+            <input type="text" class="form-control" placeholder="Username" ng-model="user.username" ng-required="true" disabled/>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-3">
+            <label class="control-label" style="float: left">Email</label>
+          </div>
+          <div class="col-sm-1"></div>
+          <div class="col-sm-8">
+            <input type="email" class="form-control" placeholder="Email" ng-model="user.email"  disabled/>
+          </div>
+        </div>
+        <div style="margin-bottom: 20px;" class="row">
+          <div class="col-sm-3">
+            <label class="control-label" style="float: left">Role</label>
+          </div>
+          <div class="col-sm-1"></div>
+          <div class="col-sm-8">
+            <select ng-model="user.role" class="form-control">
+              <option value="customer">Customer</option>
+              <option value="manager">Manager</option>
+              <option value="tester">Tester</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="row" style="margin-bottom: 20px;">
+          <div class="col-sm-3">
+            <label class="control-label" style="float: left">Skills</label>
+          </div>
+          <div class="col-sm-1"></div>
+          <div class="col-sm-8">
+            <textarea class="form-control" placeholder="" ng-model="user.skills"></textarea>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-3">
+            <label class="control-label" style="float: left">Organization</label>
+          </div>
+          <div class="col-sm-1"></div>
+          <div class="col-sm-8">
+            <input type="text" class="form-control" placeholder="Organization" ng-model="user.organization" ng-required="true" />
+          </div>
+        </div>
+
+        <div class="row" style="margin-bottom: 20px;">
+          <div class="col-sm-3">
+            <label class="control-label" style="float: left">Projects</label>
+          </div>
+          <div class="col-sm-1"></div>
+          <div class="col-sm-8">
+            <textarea class="form-control" placeholder="Projects" ng-model="user.projects"></textarea>
+          </div>
+        </div>
+
+        <div style="margin-bottom: 20px;" class="row">
+          <div class="col-sm-3">
+            <label class="control-label" style="float: left">Work Exp</label>
+          </div>
+          <div class="col-sm-1"></div>
+          <div class="col-sm-8">
+            <select ng-model="user.exp" class="form-control">
+              <option value="0">0</option>
+              <option value="1-2">1-2</option>
+              <option value="2-5">2-5</option>
+              <option value="5+">5+</option>
+            </select>
+          </div>
+        </div>
+
+        <div style="margin-bottom: 20px;" class="row">
+          <div class="col-sm-3">
+            <label class="control-label" style="float: left">Gender</label>
+          </div>
+          <div class="col-sm-1"></div>
+          <div class="col-sm-8">
+            <select ng-model="user.sex" class="form-control">
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+              <option value="na">NA</option>
+            </select>
+          </div>
+        </div>
+        <div style="margin-bottom: 20px;" class="row">
+          <div class="col-sm-3">
+            <label class="control-label" style="float: left">Country</label>
+          </div>
+          <div class="col-sm-1"></div>
+          <div class="col-sm-8">
+            <select ng-model="user.country" class="form-control">
+              <option value="usa">USA</option>
+              <option value="outside">Outside</option>
+
+            </select>
+          </div>
+        </div>
+        <div class="row" style="margin-bottom: 20px;">
+          <div class="col-sm-3">
+            <label class="control-label" style="float: left">LinkedIn</label>
+          </div>
+          <div class="col-sm-1"></div>
+          <div class="col-sm-8">
+            <input type="url" class="form-control" placeholder="Linkedin Url" ng-model="user.linkedin" ng-required="true" />
+          </div>
+        </div>
+        <div class="row" style="margin-bottom: 20px;">
+          <div class="col-sm-3" style="float: left">
+            <label class="control-label" style="float: left">Portfolio</label>
+          </div>
+          <div class="col-sm-1"></div>
+          <div class="col-sm-8">
+            <input type="url" class="form-control" placeholder="portfolio" ng-model="user.portfolio" ng-required="true" />
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-3">
+            <label class="control-label" style="float: left">Hours/Week</label>
+          </div>
+          <div class="col-sm-1"></div>
+          <div class="col-sm-8">
+            <input type="text" class="form-control" placeholder="Hours/Week" ng-model="user.hours" ng-required="true" />
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-3">
+            <label class="control-label" style="float: left">Available</label>
+          </div>
+          <div class="col-sm-1"></div>
+          <div class="col-sm-1" style="float: left">
+            <input type="checkbox" class="form-control" placeholder="portfolio" ng-model="user.available" ng-required="true" style="float: left"/>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+
+            <button type="submit" class="btn btn-primary submit" ng-click="update()">Submit </button>
+          </div>
+        </div>
+
+
+        <div class="clearfix"></div>
+
+        <div class="separator">
+          <div class="clearfix"></div>
+          <br />
+
+          <div>
+            <h1><i class="fa fa-cloud"></i> Cloud Niners</h1>
+            <p></p>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="col-sm-2"></div>
+  </section>
+</div>

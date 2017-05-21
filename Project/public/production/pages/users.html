@@ -1,0 +1,107 @@
+<div class="right_col" role="main">
+    <div class="">
+        <div class="page-title">
+            <div class="title_left">
+                <h3>{{user_role | capitalize}}</h3>
+            </div>
+
+            <div class="title_right">
+                <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                    <div class="input-group">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="clearfix"></div>
+
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>{{user_role | capitalize}} List</h2>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <table class="table" datatable="ng">
+                            <thead>
+                            <tr>
+                                <th>{{user_role | capitalize}} Name</th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr ng-repeat="user in users">
+                                <td>{{user.name}}</td>
+                                <td><button type="button" class="btn btn-success" data-toggle="modal" data-target="#viewModal" ng-click="viewProfile(user._id)">View Profile</button></td>
+                                <td><div ng-hide="istester" ><button id="{{user._id}}" type="button" class="btn btn-warning" data-toggle="modal" data-target="#viewModalForProject" ng-click="viewAllProjectsList(user._id)">Add To Project + </button></div></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="viewModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Complete Profile</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row"><div class="col-sm-4"><p><strong>First Name:</strong></div>{{profileData.name}}</p></div><hr>
+                        <div class="row"><div class="col-sm-4"><p><strong>Last Name: </strong></div>{{profileData.last_name}}</p></div><hr>
+                        <div class="row"><div class="col-sm-4"><p><strong>Skills: </strong></div>{{profileData.skills}}</p></div><hr>
+                        <div class="row"><div class="col-sm-4"><p><strong>Work Experience: </strong></div>{{profileData.exp}}</p></div><hr>
+                        <div class="row"><div class="col-sm-4"><p><strong>Sex: </strong></div>{{profileData.sex}}</p></div><hr>
+                        <div class="row"><div class="col-sm-4"><p><strong>Linkedin Profile: </strong></div>{{profileData.linkedin}}</p></div><hr>
+                        <div class="row"><div class="col-sm-4"><p><strong>Portfolio: </strong></div>{{profileData.portfolio}}</p></div><hr>
+                        <div class="row"><div class="col-sm-4"><p><strong>Organisation: </strong></div>{{profileData.organization}}</p></div><hr>
+                        <div class="row"><div class="col-sm-4"><p><strong>Country: </strong></div>{{profileData.country}}</p></div><hr>
+                        <div class="row"><div class="col-sm-4"><p><strong>Current Projects: </strong></div>{{profileData.projects}}</p></div><hr>
+                        <div class="row"><div class="col-sm-4"><p><strong>Available: </strong></div>{{profileData.available}}</p></div><hr>
+                        <div class="row"><div class="col-sm-4"><p><strong>Hours Available: </strong></div>{{profileData.hours}}</p></div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="viewModalForProject" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabelForProject">Complete list of Projects</h4>
+                    </div>
+                    <div class="modal-body">
+                        <table class="table" datatable="ng">
+                            <thead>
+                            <tr>
+                                <th>Project Name </th>
+                                <th>Start Date</th>
+                                <th>Description</th>
+                                <th>Add+</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="project in tempProjectList">
+                                    <td>{{project.name}}</td>
+                                    <td>{{project.startdate}}</td>
+                                    <td>{{project.description}}</td>
+                                    <td><button type="button" class="btn btn-success" data-toggle="modal" ng-click="AssignProjectToUser(project)">Add</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

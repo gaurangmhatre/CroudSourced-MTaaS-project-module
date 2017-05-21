@@ -1,0 +1,136 @@
+<div class="right_col" role="main">
+  <div class="">
+    <div class="page-title">
+      <div class="title_left">
+        <h3>Dashboard</h3>
+      </div>
+
+      <div class="title_right">
+        <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+          <div class="input-group">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="clearfix"></div>
+
+    <div class="row">
+      <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+          <div class="x_title">
+            <h2>Statistics</h2>
+            <div class="clearfix"></div>
+          </div>
+          <div class="x_content">
+            <div class="row">
+
+              <div class="col-md-12">
+                <div class="">
+                  <div class="x_content">
+                    <div class="row">
+                      <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                        <div class="tile-stats">
+                          <div class="icon"><i class="fa fa-users"></i>
+                          </div>
+                          <div class="count">{{ customers }}</div>
+
+                          <h3>Customers</h3>
+                          <p></p>
+                        </div>
+                      </div>
+                      <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                        <div class="tile-stats">
+                          <div class="icon"><i class="fa fa-suitcase"></i>
+                          </div>
+                          <div class="count">{{ managers}}</div>
+
+                          <h3>Managers</h3>
+                          <p></p>
+                        </div>
+                      </div>
+                      <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                        <div class="tile-stats">
+                          <div class="icon"><i class="fa fa-gears"></i>
+                          </div>
+                          <div class="count">{{ testers }}</div>
+
+                          <h3>Testers</h3>
+                          <p></p>
+                        </div>
+                      </div>
+                      <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                        <div class="tile-stats">
+                          <div class="icon"><i class="fa fa-pie-chart"></i>
+                          </div>
+                          <div class="count">{{ projects }}</div>
+
+                          <h3>Projects</h3>
+                          <p></p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- bar chart -->
+              <div class="col-md-6 col-sm-6 col-xs-12">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2>Top Testers <small>Sessions</small></h2>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+                    <div id="graph_bar" style="width:100%; height:280px;"></div>
+                  </div>
+                </div>
+              </div>
+              <!-- /bar charts -->
+              <!-- pie chart -->
+              <div class="col-md-6 col-sm-6 col-xs-12">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2>Activity <small>Sessions</small></h2>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content2">
+                    <div id="graph_donut" style="width:100%; height:300px;"></div>
+                  </div>
+                </div>
+              </div>
+              <!-- /Pie chart -->
+              <!-- graph area -->
+              <div class="col-md-6 col-sm-6 col-xs-12">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2>Timeline vs. Cost <small>Sessions</small></h2>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content2">
+                    <div id="graph_area" style="width:100%; height:300px;"></div>
+                  </div>
+                </div>
+              </div>
+              <!-- /graph area -->
+
+              <!-- line graph -->
+              <div class="col-md-6 col-sm-6 col-xs-12">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2>Project Timeline vs Project Resources <small>Sessions</small></h2>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content2">
+                    <div id="graph_line" style="width:100%; height:300px;"></div>
+                  </div>
+                </div>
+              </div>
+              <!-- /line graph -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
